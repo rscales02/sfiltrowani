@@ -5,6 +5,7 @@ from flask_login import UserMixin
 from hashlib import md5
 from time import time
 import jwt
+from flask_babel import _
 
 followers = db.Table(
     'followers',
@@ -85,7 +86,7 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return "Post {}".format(self.body)
+        return _("Post %(body)s", body=self.body)
 
 
 @login.user_loader
