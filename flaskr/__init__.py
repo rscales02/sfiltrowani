@@ -31,7 +31,11 @@ moment = Moment(app)
 # implement translations
 babel = Babel(app)
 
+
 if not app.debug:
+    """
+    if not debugging, set up mail server and automatically email errors as they occur
+    """
     if app.config['MAIL_SERVER']:
         auth = None
         if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
@@ -63,4 +67,8 @@ from flaskr import routes, models, errors
 
 @babel.localeselector
 def get_locale():
+    """
+    find which languages are preferred by user and translate page into preferred language or best match
+    :return: returns best match language to translate page into
+    """
     return request.accept_languages.best_match(app.config['LANGUAGES'])

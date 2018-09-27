@@ -4,7 +4,9 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
-    # create class to configure flask app
+    """
+    create class to configure flask app
+    """
     SECRET_KEY = os.environ.get('SECRET_KEY') or "that-is-a-secret"
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -16,6 +18,7 @@ class Config(object):
     ADMINS = ['rscales02@gmail.com']
     POSTS_PER_PAGE = 2
     LANGUAGES = ['en', 'es']
+    MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')
 
 
 """
