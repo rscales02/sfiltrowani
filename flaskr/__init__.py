@@ -1,3 +1,7 @@
+# coding=utf-8
+"""
+initialization of flask app for sfiltrowani
+"""
 from flask import Flask, request
 from config import Config
 from flask_babel import Babel

@@ -1,3 +1,7 @@
+# coding=utf-8
+"""
+testing suite for database models
+"""
 from datetime import datetime, timedelta
 import unittest
 from flaskr import app, db
@@ -6,25 +10,40 @@ from flaskr.models import User, Post
 
 class UserModelCase(unittest.TestCase):
     def setUp(self):
+        """
+        set up sql database for test
+        """
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
         db.create_all()
 
     def tearDown(self):
+        """
+        delete sql database after testing
+        """
         db.session.remove()
         db.drop_all()
 
     def test_password_hashing(self):
+        """
+        test password hashing function
+        """
         u = User(username='Susan')
         u.set_password('cat')
         self.assertFalse(u.check_password('dog'))
         self.assertTrue(u.check_password('cat'))
 
     def test_avatar(self):
+        """
+        test function to get avatar for users
+        """
         u = User(username='John', email='john@example.com')
         self.assertEqual(u.avatar(128), ('https://www.gravatar.com/avatar/d4c74594d841139328695756648b6bd6?d'
                                          '=identicon&s=128'))
 
     def test_follow(self):
+        """
+        test the function to follow other users
+        """
         u1 = User(username='John', email='john@example.com')
         u2 = User(username='Susan', email='susan@example.com')
         db.session.add(u1)
@@ -48,6 +67,9 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(u2.followers.count(), 0)
 
     def test_follow_posts(self):
+        """
+        test function of following posts of other users
+        """
         # create users
         u1 = User(username='John', email='john@example.com')
         u2 = User(username='Sally', email='sally@example.com')

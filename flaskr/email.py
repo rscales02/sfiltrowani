@@ -1,3 +1,7 @@
+# coding=utf-8
+"""
+handle emailing for flask app
+"""
 from flask_mail import Message
 from flaskr import mail, app
 from flask import render_template

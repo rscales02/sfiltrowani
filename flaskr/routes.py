@@ -1,3 +1,7 @@
+# coding=utf-8
+"""
+page request routes
+"""
 from datetime import datetime
 from flaskr import app, db
 from flask import render_template, flash, redirect, url_for, request, jsonify
@@ -10,6 +14,7 @@ from werkzeug.urls import url_parse
 from flask_babel import _
 from guess_language import guess_language
 from flaskr import translate
+
 
 @app.before_request
 def before_request():

@@ -1,3 +1,7 @@
+# coding=utf-8
+"""
+handle errors
+"""
 from flask import render_template
 from flaskr import app, db
 
