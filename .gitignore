@@ -13,4 +13,3 @@ dist/
 build/
 *.egg-info/
 logs/
-.idea

@@ -25,12 +25,11 @@ class RegistrationForm(FlaskForm):
     """
     username = StringField(_l('Username'), validators=[DataRequired()])
     email = StringField(_l('Email'), validators=[DataRequired(), Email()])
-    password: StringField = StringField(_l('Password'), validators=[DataRequired()])
-    password2 = StringField(_l('Repeat Password'), validators=[DataRequired(), EqualTo('password')])
+    password = PasswordField(_l('Password'), validators=[DataRequired()])
+    password2 = PasswordField(_l('Repeat Password'), validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField(_l('Register'))
 
-    @staticmethod
-    def validate_username(username):
+    def validate_username(self, username):
         """
         validate username is unique
         :param username: expects string
@@ -40,8 +39,7 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError(_l('Please choose a different username.'))
 
-    @staticmethod
-    def validate_email(email):
+    def validate_email(self, email):
         """
         validate email is unique
         :param email: expects string
