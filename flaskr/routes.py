@@ -13,7 +13,7 @@ from flaskr.models import User, Post
 from werkzeug.urls import url_parse
 from flask_babel import _
 from guess_language import guess_language
-from flaskr import translate
+from flaskr.translate import translate
 
 
 @app.before_request

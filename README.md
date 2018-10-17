@@ -12,10 +12,7 @@ run virtualenv venv
 
 run pip install -r "requirements.txt"
 
-open editor and file /venv/lib/site-packages/guess-language/guess_language.py
-
-change line 37 from "import blocks" to "import .blocks"
-change line 479 from "unichr" to chr
+change dummyconfig.py to config.py and add your translation api key
 
 Start flask with: flask run
 
