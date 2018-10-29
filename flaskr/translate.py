@@ -8,12 +8,12 @@ from flask_babel import _
 from flaskr import app
 
 
-def translate(text, source_language, dest_language):
+def translate(text, source_language, dest_language='en'):
     """
     allow users to translate posts into their native language
     :param text: original text from _() and _l() functions
     :param source_language: origin language
-    :param dest_language: final language
+    :param dest_language: language of users preference as found in g.locale
     :return: translated text in string
     """
     if 'MS_TRANSLATOR_KEY' not in app.config or not app.config['MS_TRANSLATOR_KEY']:
