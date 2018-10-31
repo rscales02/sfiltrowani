@@ -1,14 +1,10 @@
-# coding=utf-8
-"""
-define flask app instance
-"""
-from flaskr import app, db
-from flaskr.models import User, Post
+from app import create_app, db, cli
+from app.models import User, Post
+
+app = create_app()
+cli.register(app)
 
 
 @app.shell_context_processor
 def make_shell_context():
-    """
-    give defaults for flask shell command
-    """
-    return {'db': db, 'User': User, "Post": Post}
+    return {'db': db, 'User': User, 'Post': Post}
