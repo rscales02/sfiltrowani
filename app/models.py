@@ -92,7 +92,7 @@ class SearchableMixin(object):
             return cls.query.filter_by(id=0), 0
         when = []
         for i in range(len(ids)):
-            when.append(ids[i], i)
+            when.append((ids[i], i))
         return cls.query.filter(cls.id.in_(ids)).order_by(db.case(when, value=cls.id)), total
 
     @classmethod
@@ -126,6 +126,7 @@ class Post(SearchableMixin, db.Model):
     __searchable__ = ['body']
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
+    video = db.Column(db.String(340))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     language = db.Column(db.String(5))

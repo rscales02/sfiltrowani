@@ -41,7 +41,11 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
-        user.set_password(form.password.data)
+        if len(form.password.data) > 11:
+            user.set_password(form.password.data)
+        else:
+            flash(_("Password minimum length is 12 characters"))
+            return redirect(url_for('auth.register', title=_('Register'), form=form))
         db.session.add(user)
         db.session.commit()
         flash(_('Congratulations, you are now a registered user!'))

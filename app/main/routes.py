@@ -145,3 +145,6 @@ def search():
     prev_url = url_for('main.search', q=g.search_form.q.data, page=page - 1) if page > 1 else None
     return render_template('search.html', title=_('Search'), posts=posts, next_url=next_url, prev_url=prev_url)
 
+@bp.route('/news')
+def news():
+    return render_template('news.html')
