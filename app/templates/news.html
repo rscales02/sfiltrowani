@@ -1,10 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block app_content %}
+    <h1>{{ _('News') }}</h1>
+    <div>
+        <h3>{{ _('Fact') }}</h3>
+        <p>
+            {{ _("The British daily Financial Times recognized Poland as the European capital of smog. The ranking of the
+            50 most polluted cities include as many as 33 Polish cities. The worst situation has occured in Skala near
+            Krakow. In December, the dust guages showed up to 980 micrograms per cubic meter. This is nearly a 20-fold
+            exceedance of the hourly norm which is 50") }}
+        </p>
+        <h3>{{ _('Reaction') }}</h3>
+        <p>
+            {{ _("The reaction - or rather lack there of - was a declaration by Deputy Minister of Development Jadwiga
+            Emilewiczs.  As of 1/10/2017, a new regulation of the Ministry of Development entered into force, which
+            tightens the emission standards for domestic boilers") }}
+        </p>
+    </div>
+    <div>
+        <h3>{{ _('Fact') }}</h3>
+        <p>
+            {{ _('According to current data, the inhabitants of Warsaw are inhaling carcinogenic benzo (a)
+            pyrene in an amount corresponding to the burnout of approx. 1000 cigarettes per year.  Inhabitants of
+            Warsaw\'s villages breathe in much more - they "burn" between 1,600 and 2,400 cigarettes per year.  Because
+            the source of this substance is mainly so-called low emission, residents of Warsaw districts with predominant
+            single-family buildings are probably inhaling much more benzo (a) pyrene than Warsaw\'s measuring stations show.') }}
+        </p>
+        <h3>{{ _('Reaction') }}</h3>
+        <p>
+            {{ _('Researchers are increasingly pointing out that the effects of inhaling harmful substances contained in
+            smog can protect us from an appropriate diet.  Some ingredients that we find in food make our body more
+            resistant.  Reach for Omega-3 acids, which reduce the effects of polluted air on the body.  Taking omega-3
+            (in the form of 2 grams of fish oil per day) reduces HRV (sinus arrhythmia) associated with PM2,5 by 54
+            percent, and also eliminates the effects of oxidative stress, a natural disorder in the body, the balance
+            between free radicals and antioxidants.  The same properties also have vitamins B6 and B12') }}
+        </p>
+    </div>
+<div>
+        <h3>{{ _('Fact') }}</h3>
+        <p>
+            {{ _('During the high level of smog outside, we hear in the messages to stay at home.  However, according to
+            the research conducted in Wroclaw, the situation inside the building is terrible.  The table below presents
+            the level of the most dangerous molecules for health (PM2.5 and PM10) measured inside and outside in winter.
+            The conclusion is one:') }}
+        </p>
+        <h3>{{ _('Reaction') }}</h3>
+        <p>
+            {{ _('To ensure adequate protection against the effects of smog inside - it is necessary to use filters and
+            cleaners in the room (we have a cheap and effective solutions) which, when exchanged, eliminate harmful
+            particles (PM2.5 and PM10) to an appropriate minimum.  It is also recommended to seal the windows, exchange
+            ventilations, air the rooms when the emission level is low.') }}
+        </p>
+    </div>
+{% endblock %}

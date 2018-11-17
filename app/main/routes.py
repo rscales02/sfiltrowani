@@ -21,16 +21,21 @@ def before_request():
     g.locale = str(get_locale())
 
 
-@bp.route('/', methods=['GET', 'POST'])
-@bp.route('/index', methods=['GET', 'POST'])
-@login_required
+@bp.route('/')
+@bp.route('/index')
 def index():
+    return render_template('index.html', title="Home")
+
+
+@bp.route('/post', methods=['GET', 'POST'])
+@login_required
+def post():
     form = PostForm()
     if form.validate_on_submit():
         language = guess_language(form.post.data)
         if language == 'UNKNOWN' or len(language) > 5:
             language = ''
-        post = Post(body=form.post.data, author=current_user, language=language)
+        post = Post(body=form.post.data, video=form.video.data, author=current_user, language=language)
         db.session.add(post)
         db.session.commit()
         flash(_('Your post is now live!'))
@@ -42,13 +47,17 @@ def index():
         if posts.has_next else None
     prev_url = url_for('main.index', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('index.html', title=_('Home'), form=form,
+    return render_template('post.html', title=_('Post'), form=form,
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
 
+@bp.route('/education')
+def education():
+    return render_template('education.html', title=_('Education'))
+
+
 @bp.route('/explore')
-@login_required
 def explore():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
@@ -147,4 +156,8 @@ def search():
 
 @bp.route('/news')
 def news():
-    return render_template('news.html')
+    return render_template('news.html', title='News')
+
+@bp.route('/about_us')
+def about_us():
+    return render_template('about_us.html', title='About Us')

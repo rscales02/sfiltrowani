@@ -25,6 +25,7 @@ class EditProfileForm(FlaskForm):
 
 class PostForm(FlaskForm):
     post = TextAreaField(_l('Say something'), validators=[DataRequired()])
+    video = StringField(_l('Youtube Embed Link'))
     submit = SubmitField(_l('Submit'))
 
 

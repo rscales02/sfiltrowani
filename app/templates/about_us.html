@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>{{ _('About Us') }}</h1>
+    <div style="display: inline-block">
+        <p>
+            {{ _("We are two young people whose travels are one of the passions.  The second is to help others and to 
+            meet the reality that destructively affects our lives.  Every day we live in big cities, which, like all of
+            you, affects us in the light and shadows.  The latter invisibly, though very ad-hoc, especially during the 
+            winter season, when smoke from the chimney begin to burst into the air, and omnipresent SMOG in us.  As") }}
+        </p>
+        <a href="{{ url_for( 'main.index') }}">Sfiltrowani.pl</a>
+        <p>
+            {{ _("we want to help you get out of the gray reality and not treat the smog like air!  We will show you how to
+            quickly and cheaply purify the air around you and leave the shadow of this silent killer.  With us you will
+            learn the basic facts and smog myths and you will learn how to easily construct a home air purifier... and
+            others - because as for the creative people it is always in the subject of smog - like him - we are
+            developing.  Find us on Facebook and like our page.  Join us and together, let's filter the air for the
+            better!") }}
+        </p>
+    </div>
+{% endblock %}
