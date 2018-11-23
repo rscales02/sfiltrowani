@@ -16,3 +16,5 @@ logs/
 .idea/
 
 config.py
+
+*.pem
