@@ -15,7 +15,6 @@ build/
 logs/
 .idea/
 
-config.py
 
 *.pem
 # Elastic Beanstalk Files
