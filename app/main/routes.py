@@ -35,7 +35,9 @@ def post():
         language = guess_language(form.post.data)
         if language == 'UNKNOWN' or len(language) > 5:
             language = ''
-        post = Post(body=form.post.data, video=form.video.data, author=current_user, language=language)
+        url_template = "https://www.youtube.com/embed/"
+        vid_address = form.video_url.data.split('/')[-1]
+        post = Post(body=form.post.data, video=url_template + vid_address, author=current_user, language=language)
         db.session.add(post)
         db.session.commit()
         flash(_('Your post is now live!'))
