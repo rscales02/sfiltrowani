@@ -37,7 +37,8 @@ def post():
             language = ''
         url_template = "https://www.youtube.com/embed/"
         vid_address = form.video_url.data.split('/')[-1]
-        post = Post(body=form.post.data, video=url_template + vid_address, author=current_user, language=language)
+        post = Post(body=form.post.data, video=url_template + vid_address if vid_address else None,
+                    author=current_user, language=language)
         db.session.add(post)
         db.session.commit()
         flash(_('Your post is now live!'))
@@ -156,10 +157,28 @@ def search():
     prev_url = url_for('main.search', q=g.search_form.q.data, page=page - 1) if page > 1 else None
     return render_template('search.html', title=_('Search'), posts=posts, next_url=next_url, prev_url=prev_url)
 
+
 @bp.route('/news')
 def news():
     return render_template('news.html', title='News')
 
+
 @bp.route('/about_us')
 def about_us():
     return render_template('about_us.html', title='About Us')
+
+
+@bp.route('/delete_post/<id>', methods=["GET", "POST"])
+@login_required
+def delete_post(id):
+    if request.method is "GET":
+        print('this was a get request')
+    post = Post.query.filter_by(id=id).first()
+    if post is None:
+        flash(_('Post %(id)s not found.', id=id))
+        return redirect(url_for('main.index'))
+    else:
+        post.delete_post()
+        db.session.commit()
+        flash(_('Your post has been deleted'))
+        return redirect(url_for('main.explore'))

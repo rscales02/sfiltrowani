@@ -28,6 +28,9 @@
                                 '{{ g.locale }}');">{{ _('Translate') }}</a>
                 </span>
                 {% endif %}
+                {% if current_user.is_authenticated and post.id %}
+                    <a href=" {{ url_for('main.delete_post', id=post.id) }}", methods="POST">{{ _('Delete') }}</a>
+                {% endif %}
             </td>
         </tr>
     </table>

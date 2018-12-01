@@ -134,6 +134,9 @@ class Post(SearchableMixin, db.Model):
     def __repr__(self):
         return '<Post {}>'.format(self.body)
 
+    def delete_post(self):
+        db.session.delete(self)
+
 
 db.event.listen(db.session, 'before_commit', SearchableMixin.before_commit)
 db.event.listen(db.session, 'after_commit', SearchableMixin.after_commit)
