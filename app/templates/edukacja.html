@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<div>
+    <p>
+        {{ _('Jako sfiltrowani chcemy Was nie tylko edukować w temacie smogu ale również stać się źródłem cennych
+        informacji jak w życiu codziennym sobie z nim radzić. ') }}
+    </p>
+    <p>
+        {{ _('Rok temu skupiliśmy się na ') }}
+        <a href="{{ url_for('main.gallery') }}">{{ _('warsztatach') }}</a> {{ _('w szkołach i pokazaniu Wam instrukcji -
+        jak zbudować oczyszczacz powietrza własnej ') }}
+        <a href="{{ url_for('main.filter_instructions') }}">{{ _('konstrukcji.') }}</a>
+    </p>
+    <!--photo carousel-->
+    <div class="carousel slide" id="workshop-carousel" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for i in range(list_range) %}
+            <li data-target="#workshop-carousel" data-slide-to="{{ i }}" class="{{ 'active' if i == 0 else '' }}"></li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner">
+            {% for image in images %}
+            <div class="item {{ 'active' if image == images[0] else '' }} center-block">
+                <img class="d-block w-50 img-responsive center-block"
+                     src="{{ url_for('static', filename='images/gallery/' + image) }}"
+                     alt="slide {{ images.index(image) }}">
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#workshop-carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#workshop-carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!--end photo carousel-->
+    <p>
+        {{ _('W tym sezonie nie chcemy się odcinać od tamtorocznych treści - bynajmniej, raczej je wzbogacić.
+        Skupimy się na tym co jemy - i zechcemy pokazać Wam, że poszczególne elementy diety mają wpływ na
+        niwelowanie skutków smogu z naszego organizmu.') }}
+    </p>
+    <p>
+        {{ _('Wiele przeprowadzonych dotąd badań wykazało, że witaminy i suplementy diety wspomagają organizm w
+        walce ze smogiem. Zatem wzbogacona dieta, o te konkretne suplementy i produkty bogate w owe witaminy jest
+        bardzo korzystna dla naszego organizmu w kontekście eliminowania z niego szkód spowodowanych przez smog.')
+        }}
+    </p>
+    <p>
+        {{ _('Z dotąd przeprowadzonych badań ') }}
+        <a href="{{ url_for('main.explore') }}">{{ _("wynika") }}</a>
+        {{ _(', że witaminy z grupy: B, C, D, i E jak również karotenoidy (prekursor witaminy A) oraz kwasy
+        tłuszczowe Omega-3 zawierają właściwości redukujące skutki zanieczyszczonego powietrza.') }}
+    </p>
+</div>
+{% endblock %}

@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-    <div>
-        <h1>{{ _("Widzisc sie?") }}</h1>
-        <h2>{{ _("Czy smog Cie zakryl") }}</h2>
-        <img src="{{ url_for('static', filename='smap.png') }}" height="100px" width="100px"/>
-    </div>
-    <div>
-        <p>
-            {{ _("Learn 3 easy ways to healthy breathing and clean air") }}
-            <a href="{{ url_for('main.education') }}">{{ _('Learn More') }}</a>
-        </p>
-    </div>
+<div class="background-image" style="background-image: url({{ url_for('static', filename='images/air-carbon-chimney.jpg') }})"></div>
+<img src="{{ url_for('static', filename='images/smap.png') }}" class="img-responsive" style="float: left"/>
+<br><br><br>
+<div class="text-center">
+    <h1 >{{ _("Widzisz się?") }}</h1>
+    <h2>{{ _("Czy smog Cię zakrył?") }}</h2>
+    <h3>
+        {{ _("Poznaj ") }}
+        <a href="{{ url_for('main.education') }}">{{ _('w 3 krokach ') }}</a>
+        {{ _("jak chronić siebie i swoich bliskich przed smogiem.") }}
+    </h3>
+</div>
+
 {% endblock %}

@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+
+<h2 class="text-center"><b>{{ _('Zbuduj swój własny oczyszczacz powietrza!!!') }}</b></h2>
+<p>
+    {{ _('Poniżej zobaczysz jak łatwo, tanio i szybko możesz oddychać czystym powietrzem w domu. Oczyszczacze powietrza
+    są zazwyczaj drogie i trudno je pozyskać, przez ich cenę. Oto więc prezentujemy, nasz opatentowany,
+    autorski oczyszczacz, składający się tylko z trzech elementów, który eliminuje ilość zanieczyszczonych w powietrzu
+    cząsteczek do względnego minimum.') }}
+</p>
+<p>
+    {{ _('Takie oczyszczacze powietrza budowaliśmy na warsztatach w Krakowie i Warszawie, skoro uczniom nie przyniosło
+    to żadnego kłopotu – jesteśmy pewni, że razem z naszymi instrukcjami Tobie również się uda.') }}
+</p>
+<p>
+    {{ _('Aby skompletować produkty do budowy własnego oczyszczacza powietrza, kliknij') }}
+    <a href="https://allegro.pl/oferta/skuteczny-oczyszczacz-na-smog-wlasnej-konstrukcji-7205113046">{{ _('tutaj.') }}</a>
+</p>
+<br>
+<h2>{{ _('Instrukcja, Jak w Trzech Krokach, z Trzech Produktów Złożyć Oczyszczacz Domowej Roboty:') }}</h2>
+<ol>
+    <li>
+        {{ _('Pierwszym krokiem w konstrukcji naszego oczyszczacza jest odpowiednie złożenie wiatraka. Ułatwia to
+        instrukcja obsługi na jego pudełku, jednak niezbędnych będzie kilka naszych, wynikających z doświadczenia rad:')
+        }}
+        <ul>
+            <li>
+                {{ _('Z części z motorem należy odkręcić czarną nakrętkę na pręcie głównym, gdzie będzie śmigło wiatraka
+                aby założyć i przymocować tylną kratkę tą nakrętką.') }}
+            </li>
+            <li>
+                {{ _('Po założeniu śmigła należy przykręcić pomarańczową nakrętkę na pręt, żeby śmigło zostało
+                przymocowane.') }} <a href="#" data-toggle="modal" data-target="#instrukcjaA.jpg">
+                {{ _('(instrukcja photo A)') }}</a>
+            </li>
+            <li>
+                {{ _('Następnie, należy założyć przednią kratkę oraz przymocować ją małymi przyciskami do tylnej kratki,
+                tak aby konstrukcja była stabilna.') }}
+                <a href="#" data-toggle="modal" data-target="#instrukcjaB.jpg">{{ _('(instrukcja photo B)') }}</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        {{ _('Drugim krokiem jest założenie stojaka, zgodnie z podaną instrukcją na pudełku i przymocowanie do
+        niego wiatraka.') }}
+        <a href="#" data-toggle="modal" data-target="#instrukcjaC.jpg">{{ _('(instrukcja photo C)') }}</a>
+        <ul>
+            <li>
+                {{ _('Należy wyciągnąć srebrną rurkę ze środka stojącej czarnej rury w stojaku, aby przykręcić i
+                przymocować wiatrak śrubą i podkładką, ktore znajdują się za przyciskami elektronicznymi na części z
+                wiatrakiem. Bardzo ważne jest aby nie zgubić podkładkę do tej śrubki.') }}
+                <a href="#" data-toggle="modal" data-target="#instrukcjaD.jpg">{{ _('(instrukcja photo D)') }}</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        {{ _('Do złożonego wiatraka, jego przedniej części, szczególnie na/ w okrągłej luce, umieszczamy filtr. Bardzo
+        precyzyjnie przylepiamy go do wiatraka taśmą.') }}
+        <a href="#" data-toggle="modal" data-target="#instrukcjaE.jpg">{{ _('(instrukcja photo E)') }}</a>
+        <ul>
+            <li>
+                {{ _('Przed umieszczeniem filtra na wiatraku zdejmujemy niebieski dodatkowy filtr, który zmniejszałby
+                przepływ powietrza i używając jeden czy dwa mniejsze kawałki taśmy umieszczamy filtr (stroną rzepową do
+                wiatraka) na środku wiatraka.') }}
+            </li>
+            <li>
+                {{ _('Następnie należy precyzyjnie (gdyż cząsteczki są tak małe, że są niewidoczne i chcemy
+                zminimalizować szparki przez które cząsteczki mogą się przedostać) dołączyć plastikową część filtru do
+                wiatraka uważając żeby nie przykrywać filtru (białej części).') }}
+                <a href="#" data-toggle="modal" data-target="#instrukcjaF.jpg">{{ _('(instrukcja photo F)') }}</a>
+                 <a href="#" data-toggle="modal" data-target="#myModal">myModal</a>
+            </li>
+            <li>
+                {{ _('    • Bardzo ważne aby precyzyjnie obklejoną taśmą, przednia część wiatraka nie zasłaniała tylnej,
+                przez którą wpada powietrze.') }}
+            </li>
+        </ul>
+    </li>
+</ol>
+<br>
+<p>
+    {{ _('Sygnałem do zmiany filtru będzie jego kolor, który z pierwotnie białego zacznie ciemnieć.') }}
+</p>
+<p>
+    {{ _('Bardzo ważne jest aby własnoręcznie skonstruowany oczyszczacz był włączony w momencie gdy ktoś jest w domu i
+    wyłączony przy wychodzeniu z domu.') }}
+</p>
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+            <img id='modal-img' src="{{ url_for('static', filename='images/instructions/instrukcjaF.jpg') }}" alt="test">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% for image in images %}
+  <!-- Modal -->
+
+  <div class="modal fade" id="{{ image }}" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+            <img id='modal-img' src="{{ url_for('static', filename='images/instructions/' + image) }}" alt="{{ loop.index }}">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}

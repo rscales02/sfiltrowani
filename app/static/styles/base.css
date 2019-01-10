@@ -1,3 +1,81 @@
-body {
-    background-image: url("../air-carbon-chimney.jpg"),
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
+html, body {margin:0;padding:2px;height:100%;}
+
+html {
+    padding-top: 75px;
+  font-size: 20px;
+  font-family: 'Inconsolata', monospace;
+}
+
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+@media screen and (min-width: 601px) {
+  h1 { font-size: 350% }
+  h2 { font-size: 300% }
+  p {
+    font-size: 200%;
+  }
+  ol{ font-size: 150% }
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+  p {
+    font-size: 150%;
+  }
+   ol{ font-size: 125% }
+}
+
+.background-image {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    /* Full height */
+    height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  /* move to back */
+  z-index: -1;
+}
+
+p {
+    color: black;
+}
+
+.height-div {
+    height 250px;
+    background-color: rgba(0,0,0,0)
+}
+
+img {
+    padding: 10px;
+    max-height: 400px;
+}
+
+.navbar-brand {
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    max-height: 100%;
+}
+
+.carousel {
+    background-color: black;
+}
+
+.row {
+    display: inline;
+}
+
+.row img {
+    max-width: 100%
+    vertical-align: middle
 }

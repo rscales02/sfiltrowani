@@ -1,3 +1,7 @@
+# encoding=utf-8
+
+from os.path import relpath
+from os import listdir
 from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request, g, \
     jsonify, current_app
@@ -57,7 +61,10 @@ def post():
 
 @bp.route('/education')
 def education():
-    return render_template('education.html', title=_('Education'))
+    img_list = listdir('./app/static/images/gallery')
+    list_range = len(img_list)
+    print(img_list)
+    return render_template('edukacja.html', title=_('Education'), images=img_list, list_range=list_range)
 
 
 @bp.route('/explore')
@@ -69,7 +76,7 @@ def explore():
         if posts.has_next else None
     prev_url = url_for('main.explore', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('explore.html', title=_('Explore'),
+    return render_template('akcja.html', title=_('Explore'),
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
@@ -160,12 +167,12 @@ def search():
 
 @bp.route('/news')
 def news():
-    return render_template('news.html', title='News')
+    return render_template('reakcja.html', title='News')
 
 
 @bp.route('/about_us')
 def about_us():
-    return render_template('about_us.html', title='About Us')
+    return render_template('o_nas.html', title='About Us')
 
 
 @bp.route('/delete_post/<id>', methods=["GET", "POST"])
@@ -182,3 +189,15 @@ def delete_post(id):
         db.session.commit()
         flash(_('Your post has been deleted'))
         return redirect(url_for('main.explore'))
+
+
+@bp.route('/gallery')
+def gallery():
+    img_list = listdir('./app/static/images/gallery')
+    return render_template('galeria.html', title='Galeria', images=img_list)
+
+
+@bp.route('/filter_instructions')
+def filter_instructions():
+    img_list = listdir('./app/static/images/instructions')
+    return render_template('instructions.html', title='Instrukcje', images=img_list)

@@ -2,80 +2,108 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1″>
+    <!-- Facebook Pixel Code -->
+    <script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '425400101224094');
+fbq('track', 'PageView');
+
+
+    </script>
+    <noscript>
+        <img height="1" width="1" src="https://www.facebook.com/tr?id=425400101224094&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
 </head>
 {% extends 'bootstrap/base.html' %}
-
-{% block title %}
-    {% if title %}{{ title }} - Sfiltrowani {% else %}{{ _('Welcome to Sfiltrowani') }}{% endif %}
+{% block styles %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles/base.css') }}">
 {% endblock %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/base.css') }}">
+{% block title %}
+{% if title %}{{ title }} - Sfiltrowani {% else %}{{ _('Welcome to Sfiltrowani') }}{% endif %}
+{% endblock %}
+
 
 {% block navbar %}
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='slogo.png') }}" height="25px" width="150px"/> </a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url_for('main.index') }}">{{ _('Home') }}</a></li>
-                    <li><a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a></li>
-                    <li><a href="{{ url_for('main.education') }}">{{ _('Education') }}</a></li>
-                    <li><a href="{{ url_for('main.news') }}">{{ _('News') }}</a></li>
-                    <li><a href="{{ url_for('main.about_us') }}">{{ _('About Us') }}</a></li>
-                    {% if current_user.is_authenticated %}
-                    <li><a href="{{ url_for('main.post') }}">{{ _('Post') }}</a></li>
-                    {% endif %}
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    {% if current_user.is_anonymous %}
-                    <li><a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a></li>
-                    {% else %}
-                    <li><a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
-                    <li><a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a></li>
-                    {% endif %}
-                </ul>
-                {% if g.search_form %}
-                <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
-                    <div class="form-group">
-                        {{ g.search_form.q(size=20, class="form-control", placeholder=g.search_form.q.label.text) }}
-                    </div>
-                </form>
-                {% endif %}
-            </div>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('main.index') }}"><img class="logo"
+                    src="{{ url_for('static', filename='images/slogo.png') }}"/> </a>
         </div>
-    </nav>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('main.index') }}">{{ _('Home') }}</a></li>
+                <li><a href="{{ url_for('main.education') }}">{{ _('Edukacja') }}</a></li>
+                <li><a href="{{ url_for('main.explore') }}">{{ _('Akcja') }}</a></li>
+                <li><a href="{{ url_for('main.news') }}">{{ _('Reakcja') }}</a></li>
+                <li><a href="{{ url_for('main.about_us') }}">{{ _('O Nas') }}</a></li>
+                <li><a href="{{ url_for('main.gallery') }}">{{ _('Galeria') }}</a></li>
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('main.post') }}">{{ _('Post') }}</a></li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a></li>
+                <li><a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
+            {% endif %}
+            </ul>
+            {% if g.search_form %}
+            <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
+                <div class="form-group">
+                    {{ g.search_form.q(size=20, class="form-control", placeholder=g.search_form.q.label.text) }}
+                </div>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</nav>
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+<div id="background-div">
+    <div id="content-container" class="container">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
-            {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ message }}</div>
-            {% endfor %}
+        {% for message in messages %}
+        <div class="alert alert-info" role="alert">{{ message }}</div>
+        {% endfor %}
         {% endif %}
         {% endwith %}
 
         {# application content needs to be provided in the app_content block #}
         {% block app_content %}{% endblock %}
     </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
-    {{ super() }}
-    {{ moment.include_moment() }}
-    {{ moment.lang(g.locale) }}
-    <script>
+{{ super() }}
+{{ moment.include_moment() }}
+{{ moment.lang(g.locale) }}
+<script>
         function translate(sourceElem, destElem, sourceLang, destLang) {
-            $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
+            $(destElem).html('<img src="{{ url_for('static', filename='images/loading.gif') }}">');
             $.post('/translate', {
                 text: $(sourceElem).text(),
                 source_language: sourceLang,
@@ -86,5 +114,7 @@
                 $(destElem).text("{{ _('Error: Could not contact server.') }}");
             });
         }
-    </script>
+
+
+</script>
 {% endblock %}

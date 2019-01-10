@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <div class="background-image" style="background-image: url({{ url_for('static', filename='images/citySmog.jpeg') }});"></div>
+    <div class="col-xs-12">
+        <p>
+            {{ _('Jak dowiedzieliście się z zakładki edukacja witaminy i suplementy diety niwelują  skutki smogu w
+            organizmie.') }}
+        </p>
+        <p>
+            {{ _('Jak każdy z nas wie - zanieczyszczone powietrze szkodzi naszemu zdrowiu i wyniszcza nasz organizm.')
+            }}
+        </p>
+        <p>
+            {{ _('Poniżej zamieszczamy przygotowane przez nas prezentacje. Każda poświęcona jest konkretnym witaminom i
+            suplementom! ') }}
+        </p>
+        <p>
+            {{ _('Popatrz jak ich spożywanie pozytywnie oddziaływuje na organizm.') }}
+        </p>
+    </div>
+    {% for post in posts %}
+        {% include '_post.html' %}
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<div class="background-image" style="background-image: url({{ url_for('static', filename='images/reaction.jpg') }})"></div>
+    <div>
+        <p>
+            {{ _('Wprowadzenie w codzienne życie zdrowych przyzwyczajeń, takich jak dieta bogata w witaminy I suplementy
+            bogate np. w przeciwutleniacze – pomoże nam chronić się przed skutkami zanieczyszczonego powietrza.') }}
+        </p>
+        <p>
+            {{ _('Z naszych prezentacji I informacji podanych w innych zakładkach, możecie poznać źródła konkretnych
+            witamin I suplementów. Włączenie ich do posiłków I regularne spożywanie poprawi kondycję naszego ogranizmu
+            jednocześnie redukując objawy wywołąne przez smog.') }}
+        </p>
+    </div>
+{% endblock %}
