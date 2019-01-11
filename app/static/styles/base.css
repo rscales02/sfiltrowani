@@ -79,3 +79,16 @@ img {
     max-width: 100%
     vertical-align: middle
 }
+
+body {
+	  /* Margin bottom by footer height */
+	  margin-bottom: 7%;
+	}
+.footer {
+	  position: fixed;
+	  bottom: 0;
+	  width: 100%;
+	  /* Set the fixed height of the footer here */
+	  height: 5%;
+	  background-color: #e7e7e7;
+	}
