@@ -1,6 +1,5 @@
 # encoding=utf-8
 
-from os.path import relpath
 from os import listdir
 from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request, g, \

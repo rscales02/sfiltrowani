@@ -40,7 +40,7 @@ def register():
         return redirect(url_for('main.index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        if len(User.query.all()) > 2:
+        if len(User.query.all()) > 3:
             flash(_("Maximum allowable users reached"))
             return redirect(url_for('main.explore'))
         user = User(username=form.username.data, email=form.email.data)
