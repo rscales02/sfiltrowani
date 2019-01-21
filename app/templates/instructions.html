@@ -31,33 +31,33 @@
             </li>
             <li>
                 {{ _('Po założeniu śmigła należy przykręcić pomarańczową nakrętkę na pręt, żeby śmigło zostało
-                przymocowane.') }} <a href="#" data-toggle="modal" data-target="#instrukcjaA.jpg">
+                przymocowane.') }} <a href="#" data-toggle="modal" data-target="#instrukcjaA">
                 {{ _('(instrukcja photo A)') }}</a>
             </li>
             <li>
                 {{ _('Następnie, należy założyć przednią kratkę oraz przymocować ją małymi przyciskami do tylnej kratki,
                 tak aby konstrukcja była stabilna.') }}
-                <a href="#" data-toggle="modal" data-target="#instrukcjaB.jpg">{{ _('(instrukcja photo B)') }}</a>
+                <a href="#" data-toggle="modal" data-target="#instrukcjaB">{{ _('(instrukcja photo B)') }}</a>
             </li>
         </ul>
     </li>
     <li>
         {{ _('Drugim krokiem jest założenie stojaka, zgodnie z podaną instrukcją na pudełku i przymocowanie do
         niego wiatraka.') }}
-        <a href="#" data-toggle="modal" data-target="#instrukcjaC.jpg">{{ _('(instrukcja photo C)') }}</a>
+        <a href="#" data-toggle="modal" data-target="#instrukcjaC">{{ _('(instrukcja photo C)') }}</a>
         <ul>
             <li>
                 {{ _('Należy wyciągnąć srebrną rurkę ze środka stojącej czarnej rury w stojaku, aby przykręcić i
                 przymocować wiatrak śrubą i podkładką, ktore znajdują się za przyciskami elektronicznymi na części z
                 wiatrakiem. Bardzo ważne jest aby nie zgubić podkładkę do tej śrubki.') }}
-                <a href="#" data-toggle="modal" data-target="#instrukcjaD.jpg">{{ _('(instrukcja photo D)') }}</a>
+                <a href="#" data-toggle="modal" data-target="#instrukcjaD">{{ _('(instrukcja photo D)') }}</a>
             </li>
         </ul>
     </li>
     <li>
         {{ _('Do złożonego wiatraka, jego przedniej części, szczególnie na/ w okrągłej luce, umieszczamy filtr. Bardzo
         precyzyjnie przylepiamy go do wiatraka taśmą.') }}
-        <a href="#" data-toggle="modal" data-target="#instrukcjaE.jpg">{{ _('(instrukcja photo E)') }}</a>
+        <a href="#" data-toggle="modal" data-target="#instrukcjaE">{{ _('(instrukcja photo E)') }}</a>
         <ul>
             <li>
                 {{ _('Przed umieszczeniem filtra na wiatraku zdejmujemy niebieski dodatkowy filtr, który zmniejszałby
@@ -68,8 +68,7 @@
                 {{ _('Następnie należy precyzyjnie (gdyż cząsteczki są tak małe, że są niewidoczne i chcemy
                 zminimalizować szparki przez które cząsteczki mogą się przedostać) dołączyć plastikową część filtru do
                 wiatraka uważając żeby nie przykrywać filtru (białej części).') }}
-                <a href="#" data-toggle="modal" data-target="#instrukcjaF.jpg">{{ _('(instrukcja photo F)') }}</a>
-                 <a href="#" data-toggle="modal" data-target="#myModal">myModal</a>
+                <a href="#" data-toggle="modal" data-target="#instrukcjaF">{{ _('(instrukcja photo F)') }}</a>
             </li>
             <li>
                 {{ _('    • Bardzo ważne aby precyzyjnie obklejoną taśmą, przednia część wiatraka nie zasłaniała tylnej,
@@ -87,39 +86,20 @@
     wyłączony przy wychodzeniu z domu.') }}
 </p>
 
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-            <img id='modal-img' src="{{ url_for('static', filename='images/instructions/instrukcjaF.jpg') }}" alt="test">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
 
 {% for image in images %}
   <!-- Modal -->
 
-  <div class="modal fade" id="{{ image }}" role="dialog">
+  <div class="modal fade" id="{{ image[:-4] }}" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title"></h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body text-center">
             <img id='modal-img' src="{{ url_for('static', filename='images/instructions/' + image) }}" alt="{{ loop.index }}">
         </div>
         <div class="modal-footer">
