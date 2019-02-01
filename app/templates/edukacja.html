@@ -21,7 +21,7 @@
         </ol>
         <div class="carousel-inner">
             {% for image in images %}
-            <div class="item {{ 'active' if image == images[0] else '' }} center-block">
+            <div class="item {{ 'active' if image == images[0] else '' }}">
                 <img class="d-block w-50 img-responsive center-block"
                      src="{{ url_for('static', filename='images/gallery/' + image) }}"
                      alt="slide {{ images.index(image) }}">

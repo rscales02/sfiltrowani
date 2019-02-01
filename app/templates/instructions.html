@@ -15,7 +15,7 @@
 </p>
 <p>
     {{ _('Aby skompletować produkty do budowy własnego oczyszczacza powietrza, kliknij') }}
-    <a href="https://allegro.pl/oferta/skuteczny-oczyszczacz-na-smog-wlasnej-konstrukcji-7205113046">{{ _('tutaj.') }}</a>
+    <a href="https://allegro.pl/oferta/skuteczny-oczyszczacz-na-smog-wlasnej-konstrukcji-7205113046" target="_blank">{{ _('tutaj.') }}</a>
 </p>
 <br>
 <h2>{{ _('Instrukcja, Jak w Trzech Krokach, z Trzech Produktów Złożyć Oczyszczacz Domowej Roboty:') }}</h2>
@@ -78,6 +78,7 @@
     </li>
 </ol>
 <br>
+
 <p>
     {{ _('Sygnałem do zmiany filtru będzie jego kolor, który z pierwotnie białego zacznie ciemnieć.') }}
 </p>
@@ -85,6 +86,7 @@
     {{ _('Bardzo ważne jest aby własnoręcznie skonstruowany oczyszczacz był włączony w momencie gdy ktoś jest w domu i
     wyłączony przy wychodzeniu z domu.') }}
 </p>
+<br><br><br>
 
 
 {% for image in images %}
@@ -100,7 +102,7 @@
           <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body text-center">
-            <img id='modal-img' src="{{ url_for('static', filename='images/instructions/' + image) }}" alt="{{ loop.index }}">
+            <img id='modal-img' class="img-responsive" src="{{ url_for('static', filename='images/instructions/' + image) }}" alt="{{ loop.index }}">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
