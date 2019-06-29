@@ -1,15 +1,16 @@
-# base sand box image
+# Docker image for python interpreter
 FROM python:3.7
 
-
-# create working directory
 WORKDIR /app
 
-# copy current directory into sandbox working directory
 COPY . /app
 
-# start virtual environment in container
-RUN python -m venv venv
+# RUN pip install virtualenv
+RUN source env/bin/activate
 RUN pip install -r requirements.txt
+
 EXPOSE 80
-RUN flask run
+
+ENV NAME sfiltrowani
+
+CMD ['python', 'microblog.py']
