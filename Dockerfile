@@ -7,8 +7,8 @@ COPY . /app
 
 RUN pip install -r requirements.txt
 
-EXPOSE 8080
+EXPOSE 80
 
 ENV NAME sfiltrowani
 
-CMD ['python -m', 'microblog.py']
+CMD ['python', 'microblog.py']
