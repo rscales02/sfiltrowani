@@ -15,7 +15,7 @@ build/
 logs/
 .idea/
 .flaskenv
-docker-run.log
+/docker-run.log
 dive.log
 
 
