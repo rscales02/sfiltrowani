@@ -5,19 +5,70 @@
     <meta name=”viewport” content=”width=device-width, initial-scale=1″>
     <!-- Facebook Pixel Code -->
     <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window,document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
+function translate(sourceElem, destElem, sourceLang, destLang) {
+    //translation function
+            $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
+            $.post('/translate', {
+                text: $(sourceElem).text(),
+                source_language: sourceLang,
+                dest_language: destLang
+            }).done(function(response) {
+                $(destElem).text(response['text'])
+            }).fail(function() {
+                $(destElem).text("{{ _('Error: Could not contact server.') }}");
+            });
+        }
 
-fbq('init', '425400101224094');
-fbq('track', 'PageView');
+$(function() {
+    //custom event handler for user info popup
 
+    var time = null;
+    var xhr = null;
 
+    $('.user_popup').hover(
+        function(event) {
+            //mouse in
+            var elem = $(event.currentTarget);
+            timer = setTimeout(function() {
+                timer = null
+                //popup logic
+                xhr = $.ajax(
+                    '/user/' + elem.first().text().trim() + '/popup/').done(
+                        function(data) {
+                            xhr = null
+                            // create and display popup
+                            elem.popover({
+                                trigger: "manual",
+                                html: "true",
+                                animation: "false",
+                                container: "elem",
+                                content: data
+                            }).popover('show');
+                            flask_moment_render_all();
+                        }
+                    );
+            }, 1000);
+        }
+        function(event) {
+            //on mouse out
+            var elem = $(event.currentTarget);
+            if (timer) {
+                // kill and clean timer
+                clearTimeout(timer);
+                timer = null;
+            }
+            else if (xhr) {
+                // kill clean ajax request
+                xhr.abort();
+                xhr = null;
+            }
+            else {
+                // destroy popup
+                elem.popover('destroy');
+            }
+        }
+    )
+})
     </script>
     <noscript>
         <img height="1" width="1" src="https://www.facebook.com/tr?id=425400101224094&ev=PageView&noscript=1"/>
