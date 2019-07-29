@@ -44,7 +44,7 @@ def register():
             flash(_("Maximum allowable users reached"))
             return redirect(url_for('main.explore'))
         user = User(username=form.username.data, email=form.email.data)
-        if len(form.password.data) > 11:
+        if len(form.password.data) > 5:
             user.set_password(form.password.data)
         else:
             flash(_("Password minimum length is 12 characters"))

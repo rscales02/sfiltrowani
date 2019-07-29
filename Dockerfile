@@ -5,11 +5,11 @@ RUN adduser -D microblog
 WORKDIR /home/microblog
 
 COPY requirements.txt requirements.txt
-RUN python -m venv venv
+RUN python -m venv env
 RUN apk add --no-cache --virtual .pynacl_deps build-base python3-dev libffi-dev openssl-dev
-RUN venv/bin/pip install -U pip
-RUN venv/bin/pip install -r requirements.txt
-RUN venv/bin/pip install gunicorn pymysql
+RUN env/bin/pip install -U pip
+RUN env/bin/pip install -r requirements.txt
+RUN env/bin/pip install gunicorn pymysql
 
 COPY app app
 COPY migrations migrations
